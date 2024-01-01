@@ -23,11 +23,11 @@ export const Header = () => {
         <header className="flex flex-row items-center justify-start space-x-2">
           <div>
             <Image
-              src="http://localhost:3000/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fhu11majy%2Fproduction%2F12d6ef9326b38ff6296537baa0ba03ea53844a96-460x460.png%3Fw%3D300%26h%3D300%26q%3D80&w=384&q=75"
+              src="/avatar.png"
               alt="logo"
-              width={48}
-              height={48}
-              className="w-12 h-12 border rounded-full object-contain"
+              width={200} // adjust this to match the original image width
+              height={200} // adjust this to match the original image height
+              className="w-12 h-12 border rounded-full object-fill"
             />
           </div>
 
