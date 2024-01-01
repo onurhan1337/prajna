@@ -3,6 +3,8 @@ import { draftMode } from "next/headers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import VisualEditing from "@/components/visual-editing";
+import { Header } from "@/components/layout/header";
+import Container from "@/components/layout/container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white">
-        {children}
-        {draftMode().isEnabled && <VisualEditing />}
+      <body className={`bg-white ${inter.className}`}>
+        <Container>
+          <Header />
+          {children}
+          {draftMode().isEnabled && <VisualEditing />}
+        </Container>
       </body>
     </html>
   );
