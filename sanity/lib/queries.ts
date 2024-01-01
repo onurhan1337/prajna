@@ -1,5 +1,20 @@
 import { groq } from "next-sanity";
 
-export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)]`;
+export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)]{ 
+  title,
+  subtitle,
+  categories[]->,
+  slug,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180)
+}`;
 
-export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]`;
+export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
+  title,
+  subtitle,
+  mainImage,
+  categories[]->,
+  slug,
+  body,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180)
+
+}`;
