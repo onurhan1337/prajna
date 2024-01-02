@@ -14,6 +14,16 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    animation: {
+      pop: "pop 0.6s ease-out",
+    },
+    keyframes: {
+      pop: {
+        "0%": { transform: "scale(1)" },
+        "50%": { transform: "scale(1.1)" },
+        "100%": { transform: "scale(1)" },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
