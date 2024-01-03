@@ -1,6 +1,5 @@
 import { SanityDocument } from "next-sanity";
 
-import Container from "../layout/container";
 import { PostCard } from "./card";
 
 export default function Posts({ posts }: { posts: SanityDocument[] }) {
