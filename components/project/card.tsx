@@ -15,7 +15,7 @@ export const ProjectCard = ({ project }: { project: SanityDocument }) => {
         <p className="text-md text-zinc-800">{name}</p>
       </div>
 
-      <p className="text-zinc-500 text-balance text-sm my-2">{description}</p>
+      <p className="text-zinc-500 text-pretty text-sm my-2">{description}</p>
 
       <div className="flex items-center space-x-1">
         {githubLink && (
