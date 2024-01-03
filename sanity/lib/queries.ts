@@ -36,6 +36,7 @@ export const CATEGORY_QUERY = groq`*[_type == "category" && slug.current ==   $s
 }`;
 
 export const PROJECTS_QUERY = groq`*[_type == "project"]{
+  _id,
   name,
   description,
   link,
