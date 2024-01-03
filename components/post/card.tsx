@@ -14,7 +14,10 @@ export const PostCard = ({ post }: { post: SanityDocument }) => {
   } = post;
 
   return (
-    <article className="container mx-auto grid grid-cols-1 divide-y divide-blue-100 bg-zinc-100 hover:bg-zinc-200/70 rounded-xl p-4 space-y-2">
+    <article
+      key={_id}
+      className="container mx-auto grid grid-cols-1 divide-y divide-blue-100 bg-zinc-100 hover:bg-zinc-200/70 rounded-xl p-4 space-y-2"
+    >
       <Link href={`/post/${slug.current}`} key={_id}>
         <div className="flex items-center justify-between space-x-2">
           <p className="text-md text-zinc-800">{title}</p>
