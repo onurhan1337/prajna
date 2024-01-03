@@ -3,13 +3,12 @@
 import { useRouter } from "next/navigation";
 import { SanityDocument } from "next-sanity";
 
-import Container from "../layout/container";
 import { PostCard } from "../post/card";
 
 export const Category = ({ category }: { category: SanityDocument }) => {
   return (
-    <Container>
-      <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+    <section className="space-y-2">
+      <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
         {category.title}
       </h1>
       <p className="text-sm text-zinc-600 text-balance">
@@ -29,7 +28,7 @@ export const Category = ({ category }: { category: SanityDocument }) => {
       </div>
 
       <SeeAllButton />
-    </Container>
+    </section>
   );
 };
 
