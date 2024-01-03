@@ -6,6 +6,7 @@ import { CATEGORY_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
 import { Category } from "@/components/category/category";
 import { CategoryPreview } from "@/components/category/category-preview";
+import Container from "@/components/layout/container";
 
 export const metadata: Metadata = {
   title: "Category - Prajna",
@@ -23,6 +24,8 @@ export default async function CategoryPage({
   return draftMode().isEnabled ? (
     <CategoryPreview initial={category} params={{ slug }} />
   ) : (
-    <Category category={category.data} />
+    <Container>
+      <Category category={category.data} />
+    </Container>
   );
 }
