@@ -42,21 +42,23 @@ export const CopyButton = ({
       )}
     >
       <span
-        className={cn(
-          copied ? "text-green-500 scale-105" : "text-stone-200",
-          "transition-colors duration-100 ease-in-out transform animate-pop"
-        )}
+        className={cn("transition-opacity duration-500 ease-in-out transform")}
       >
-        {copied ? <CopiedIcon /> : <CopyIcon />}
+        <CopiedIcon
+          className={cn(
+            copied ? "opacity-100 text-green-500" : "opacity-0 hidden"
+          )}
+        />
+        <CopyIcon className={cn(copied ? "opacity-0 hidden" : "opacity-100")} />
       </span>
     </button>
   );
 };
 
-const CopyIcon = () => (
+const CopyIcon = ({ className }: { className: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-copy"
+    className={cn("icon icon-tabler icon-tabler-copy", className)}
     width="16"
     height="16"
     viewBox="0 0 24 24"
@@ -72,10 +74,10 @@ const CopyIcon = () => (
   </svg>
 );
 
-const CopiedIcon = () => (
+const CopiedIcon = ({ className }: { className: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-check"
+    className={cn("icon icon-tabler icon-tabler-check", className)}
     width="16"
     height="16"
     viewBox="0 0 24 24"
