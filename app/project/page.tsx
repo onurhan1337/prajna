@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProjectPage() {
   return (
     <Container>
-      <section>
+      <section className="space-y-2">
         <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
           Projects
         </h1>
