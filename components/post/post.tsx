@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
@@ -28,15 +29,20 @@ export default function Post({ post }: { post: SanityDocument }) {
             </h2>
           )}
           <div className="flex items-center justify-between">
-            <div>
+            <div className="space-x-2">
               {categories?.length > 0 &&
                 categories.map((category: any) => (
-                  <span
+                  <Link
                     key={category._id}
-                    className="inline-block bg-zinc-100 text-zinc-600 rounded-full px-3 py-1 text-sm font-semibold mr-2"
+                    href={`/category/${category.slug.current}`}
                   >
-                    {category.title}
-                  </span>
+                    <span
+                      key={category._id}
+                      className="inline-block bg-zinc-100 border border-zinc-300 text-zinc-600 rounded-full px-3 py-1 text-xs font-semibold cursor-pointer hover:bg-zinc-200/70"
+                    >
+                      {category.title}
+                    </span>
+                  </Link>
                 ))}
             </div>
             {estimatedReadingTime && (
