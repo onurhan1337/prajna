@@ -32,3 +32,10 @@ export const CATEGORY_QUERY = groq`*[_type == "category" && slug.current ==   $s
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180)
   }
 }`;
+
+export const PROJECTS_QUERY = groq`*[_type == "project"]{
+  name,
+  description,
+  link,
+  githubLink,
+}`;
