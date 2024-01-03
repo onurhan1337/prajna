@@ -45,11 +45,9 @@ export const CopyButton = ({
         className={cn("transition-opacity duration-500 ease-in-out transform")}
       >
         <CopiedIcon
-          className={cn(
-            copied ? "opacity-100 text-green-500" : "opacity-0 hidden"
-          )}
+          className={cn(copied ? "text-green-500 block" : "hidden")}
         />
-        <CopyIcon className={cn(copied ? "opacity-0 hidden" : "opacity-100")} />
+        <CopyIcon className={cn(copied ? "hidden" : "block")} />
       </span>
     </button>
   );
