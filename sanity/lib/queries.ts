@@ -50,3 +50,9 @@ export const BOOKMARKS_QUERY = groq`*[_type == "bookmark"]{
     url,
     _createdAt,
     }`;
+
+export const HEADER_QUERY = groq`*[_type == "header"][0]{
+  avatar,
+  fullName,
+  jobTitle,
+}`;

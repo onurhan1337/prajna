@@ -13,17 +13,34 @@ import { locate } from "@/sanity/presentation/locate";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schema";
 
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(["publish", "discardChanges", "restore"]);
+
+// Define the singleton document types
+const singletonTypes = new Set(["header"]);
+
 export default defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
-    deskTool(),
+    deskTool({
+      structure: (S) =>
+        S.list()
+          .title("Content")
+          .items([
+            S.listItem()
+              .title("Header")
+              .id("header")
+              .child(S.document().schemaType("header").documentId("Header")),
+            S.documentTypeListItem("post").title("Post"),
+            S.documentTypeListItem("bookmark").title("Bookmark"),
+            S.documentTypeListItem("project").title("Project"),
+            S.documentTypeListItem("category").title("Category"),
+          ]),
+    }),
     codeInput(),
-    // Vision is a tool that lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({
       locate,
@@ -34,4 +51,10 @@ export default defineConfig({
       },
     }),
   ],
+  document: {
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
+  },
 });
