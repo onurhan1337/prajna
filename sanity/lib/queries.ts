@@ -42,3 +42,11 @@ export const PROJECTS_QUERY = groq`*[_type == "project"]{
   link,
   githubLink,
 }`;
+
+export const BOOKMARKS_QUERY = groq`*[_type == "bookmark"]{
+    _id,
+    title,
+    description,
+    url,
+    _createdAt,
+    }`;
